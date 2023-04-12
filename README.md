@@ -18,10 +18,11 @@ CRUD features in Java spring boot API
 2. MySql
 3. HTML , CSS , JAVASCRIPT.
 4. Java
+![Screenshot from 2023-04-12 20-51-03](https://user-images.githubusercontent.com/91595780/231553076-2a8d4829-baef-44e9-b2a9-0f30b09008eb.png)
 
 ![Screenshot from 2023-04-12 20-51-36](https://user-images.githubusercontent.com/91595780/231553029-a12e0012-5727-41d1-923d-98fb0b669f06.png)
-![Screenshot from 2023-04-12 20-52-10](https://user-images.githubusercontent.com/91595780/231553036-3c214d84-f41e-4294-9f94-8ea7
-![Screenshot from 2023-04-12 20-51-03](https://user-images.githubusercontent.com/91595780/231553076-2a8d4829-baef-44e9-b2a9-0f30b09008eb.png)
+
+![Screenshot from 2023-04-12 20-52-10](https://user-images.githubusercontent.com/91595780/231553036-3c214d84-f41e-4294-9f94-8ea7)
 
 ![Screenshot from 2023-04-12 21-00-57](https://user-images.githubusercontent.com/91595780/231553073-5c4c472b-d8de-4a00-934c-36fb71ad238d.png)
 
