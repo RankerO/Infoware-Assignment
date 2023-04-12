@@ -1,0 +1,38 @@
+<!doctype html>
+
+<html lang="en">
+
+<head th:replace="snippets.html :: name_head"></head>
+
+<body>
+
+<nav th:replace="snippets.html :: index_app_navbar"></nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+
+      <div style="width:50%;background-color:white">
+        <img th:src="@{/static/index.png}" style="width:600px;height:600px"  alt="Image">
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div  class="jumbotron" style="margin-left:100px;height:100%" >
+        <h1 class="display-4">Infoware Employees</h1>
+        <p class="lead">Welcome to Employee Contact Details Application</p>
+        <hr class="my-4">
+        <p>This application will keep track of contact details of employees.
+          We can add an employee, edit an existing employee, and also we can update the details of existing employee. </p>
+        <a class="btn btn-success btn-lg" th:href="@{/ui/home}" role="button" style="margin-left:210px">Get Started</a>
+      </div>
+
+    </div>
+  </div>
+</div> <!--Container-->
+
+<footer th:replace="snippets.html :: name_footer"></footer>
+
+</body>
+
+</html>

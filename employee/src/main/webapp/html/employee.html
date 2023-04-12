@@ -1,0 +1,364 @@
+<!doctype html>
+
+<html lang="en">
+
+<head th:replace="snippets.html :: name_head"></head>
+
+<body>
+
+<nav th:replace="snippets.html :: name_app_navbar"></nav>
+
+<div class="container">
+
+	<!-- Blank Row -->
+	<div class="row">
+		&nbsp;
+	</div>
+
+	<div class="row">
+	<input type="text"  class="form-control"  id="searchName" oninput="searchByName()" placeholder="Search Employee"  style="width:230px; margin-left:13px">
+		&nbsp;&nbsp;
+	<button type="button" class="btn btn-primary" id="add-employee-button">Add Employee</button>
+	</div>
+
+
+
+
+<!-- Blank Row -->
+<div class="row">
+	&nbsp;
+</div>
+<div class="row">
+
+ <!-- Table -->
+ <div class="col-12 tableDiv">
+	<table class="table table-striped" id="employee-table">
+	  <thead class="table-head">
+	    <tr>
+	        <th scope="col">Employee Full Name</th>
+	        <th scope="col">Job Title</th>
+	        <th scope="col">Phone Number</th>
+	        <th scope="col">Email</th>
+			<th scope="col">Address</th>
+			<th scope="col">City</th>
+			<th scope="col">State</th>
+			<th scope="col">Primary Emergency Contact</th>
+			<th scope="col">Phone Number</th>
+			<th scope="col">Relationship</th>
+			<th scope="col">Secondary Emergency Contact</th>
+			<th scope="col">Phone Number</th>
+			<th scope="col">Relationship</th>
+			<th scope="col" style="width : 20%;">Action</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+
+	  </tbody>
+	</table>
+
+</div>
+</div>
+
+	<!-- Blank Row -->
+	<div class="row">
+		&nbsp;
+	</div>
+
+
+	<div class="row" style="display: flex; justify-content: center;">
+		<button type="button" class="btn btn-primary" id="previous-page" style="width: 100px;">Previous</button>
+
+		<input type="number" class="form-control" name="page" id="inputPage"  value="1" min="0" oninput="displayPage()" onkeypress="return /[0-9]/i.test(event.key)" required style="width: 60px;">
+		<input type="text" class="form-control" name="totalEmployee" id="inputTotalPages"  required style="width: 60px;" disabled>
+
+		<button type="button" class="btn btn-primary" id="next-page"  style="width: 100px;">Next</button>
+	</div>
+
+</div>
+
+<!-- Employee Add Modal -->
+<div class="modal" tabindex="-1" role="dialog" id="add-employee-modal" data-backdrop="static">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title"><b>Add Employee</b></h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form class="form-inline" id="employee-form">
+					<div class="col-12">
+						<div class="form-group">
+							<label for="inputName" class="col-sm-2 col-form-label">Name<span class="required">*</span></label>
+							<div class="col-sm-10">
+								<input type="text"  class="form-control" name="name" id="inputName"  placeholder="Enter Name" required>
+								<p style="line-height:2em;"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputJobTitle" class="col-sm-2 col-form-label">Job Title<span class="required">*</span></label>
+							<div class="col-sm-10">
+								<input type="text"  class="form-control" name="job_title" id="inputJobTitle"  placeholder="Enter Job Title" required>
+								<p style="line-height:2em;"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputPhoneNumber" class="col-sm-2 col-form-label">Phone Number<span class="required">*</span></label>
+							<div class="col-sm-10">
+								<input type="text"  class="form-control" name="phone_number" id="inputPhoneNumber"  placeholder="Enter Phone Number" required>
+								<p style="line-height:2em;"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputEmail" class="col-sm-2 col-form-label">Email<span class="required">*</span></label>
+							<div class="col-sm-10">
+								<input type="text"  class="form-control" name="email" id="inputEmail"  placeholder="Enter Email" required>
+								<p style="line-height:2em;"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputAddress" class="col-sm-2 col-form-label">Address<span class="required">*</span></label>
+							<div class="col-sm-10">
+								<input type="text"  class="form-control" name="address" id="inputAddress"  placeholder="Enter Address" required>
+								<p style="line-height:2em;"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputCity" class="col-sm-2 col-form-label">City<span class="required">*</span></label>
+							<div class="col-sm-10">
+								<input type="text"  class="form-control" name="city" id="inputCity"  placeholder="Enter City" required>
+								<p style="line-height:2em;"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputState" class="col-sm-2 col-form-label">State<span class="required">*</span></label>
+							<div class="col-sm-10">
+								<input type="text"  class="form-control" name="state" id="inputState"  placeholder="Enter State" required>
+								<p style="line-height:2em;"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputPrimaryEmergencyContact" class="col-sm-2 col-form-label">Primary Emergency Contact<span class="required">*</span></label>
+							<div class="col-sm-10">
+								<input type="text"  class="form-control" name="primary_emergency_contact" id="inputPrimaryEmergencyContact"  placeholder="Enter Name" required>
+								<p style="line-height:2em;"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputPrimaryPhoneNumber" class="col-sm-2 col-form-label">Primary Phone Number<span class="required">*</span></label>
+							<div class="col-sm-10">
+								<input type="text"  class="form-control" name="primary_phone_number" id="inputPrimaryPhoneNumber"  placeholder="Enter Number" required>
+								<p style="line-height:2em;"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputPrimaryRelationship" class="col-sm-2 col-form-label">Primary Relationship<span class="required">*</span></label>
+							<div class="col-sm-10">
+								<input type="text"  class="form-control" name="primary_relationship" id="inputPrimaryRelationship"  placeholder="Enter Relationship" required>
+								<p style="line-height:2em;"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputSecondaryEmergencyContact" class="col-sm-2 col-form-label">Secondary Emergency Contact</label>
+							<div class="col-sm-10">
+								<input type="text"  class="form-control" name="secondary_emergency_contact" id="inputSecondaryEmergencyContact"  placeholder="Enter Name" >
+								<p style="line-height:2em;"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputSecondaryPhoneNumber" class="col-sm-2 col-form-label">Secondary Phone Number</label>
+							<div class="col-sm-10">
+								<input type="text"  class="form-control" name="secondary_phone_number" id="inputSecondaryPhoneNumber"  placeholder="Enter Number" >
+								<p style="line-height:2em;"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputSecondaryRelationship" class="col-sm-2 col-form-label">Secondary Relationship</label>
+							<div class="col-sm-10">
+								<input type="text"  class="form-control" name="secondary_relationship" id="inputSecondaryRelationship"  placeholder="Enter Relationship" >
+								<p style="line-height:2em;"></p>
+							</div>
+						</div>
+
+						<div>
+						</div>
+						<br>
+						<div style="display:inline-grid;width:220px"></div>
+						<button type="button" class="btn btn-secondary" data-dismiss="modal" style="width:100px">Cancel</button>
+						<button type="submit" class="btn btn-primary" id="add-employee"  style="width:100px">Add</button>
+					</div>
+				</form>
+			</div>
+
+
+			<div class="modal-footer">
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Employee Edit Modal -->
+<div class="modal" tabindex="-1" role="dialog" id="edit-employee-modal" data-backdrop="static">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title"><b>Edit Employee</b></h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form class="form-inline" id="edit-employee-form">
+					<div class="col-12">
+						<div class="form-group">
+							<label for="inputName" class="col-sm-2 col-form-label">Name<span class="required">*</span></label>
+							<div class="col-sm-10">
+								<input type="text"  class="form-control" name="name"  placeholder="Enter Name" required>
+								<p style="line-height:2em;"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputJobTitle" class="col-sm-2 col-form-label">Job Title<span class="required">*</span></label>
+							<div class="col-sm-10">
+								<input type="text"  class="form-control" name="job_title"   placeholder="Enter Job Title" required>
+								<p style="line-height:2em;"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputPhoneNumber" class="col-sm-2 col-form-label">Phone Number<span class="required">*</span></label>
+							<div class="col-sm-10">
+								<input type="text"  class="form-control" name="phone_number"  placeholder="Enter Phone Number" required>
+								<p style="line-height:2em;"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputEmail" class="col-sm-2 col-form-label">Email<span class="required">*</span></label>
+							<div class="col-sm-10">
+								<input type="text"  class="form-control" name="email" placeholder="Enter Email" required>
+								<p style="line-height:2em;"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputAddress" class="col-sm-2 col-form-label">Address<span class="required">*</span></label>
+							<div class="col-sm-10">
+								<input type="text"  class="form-control" name="name"  placeholder="Enter Address" required>
+								<p style="line-height:2em;"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputCity" class="col-sm-2 col-form-label">City<span class="required">*</span></label>
+							<div class="col-sm-10">
+								<input type="text"  class="form-control" name="city"  placeholder="Enter City" required>
+								<p style="line-height:2em;"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputState" class="col-sm-2 col-form-label">State<span class="required">*</span></label>
+							<div class="col-sm-10">
+								<input type="text"  class="form-control" name="state"   placeholder="Enter State" required>
+								<p style="line-height:2em;"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputPrimaryEmergencyContact" class="col-sm-2 col-form-label">Primary Emergency Contact<span class="required">*</span></label>
+							<div class="col-sm-10">
+								<input type="text"  class="form-control" name="primary_emergency_contact" placeholder="Enter Name" required>
+								<p style="line-height:2em;"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputPrimaryPhoneNumber" class="col-sm-2 col-form-label">Primary Phone Number<span class="required">*</span></label>
+							<div class="col-sm-10">
+								<input type="text"  class="form-control" name="primary_phone_number" placeholder="Enter Number" required>
+								<p style="line-height:2em;"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputPrimaryRelationship" class="col-sm-2 col-form-label">Primary Relationship<span class="required">*</span></label>
+							<div class="col-sm-10">
+								<input type="text"  class="form-control" name="primary_relationship"  placeholder="Enter Relationship" required>
+								<p style="line-height:2em;"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputSecondaryEmergencyContact" class="col-sm-2 col-form-label">Secondary Emergency Contact</label>
+							<div class="col-sm-10">
+								<input type="text"  class="form-control" name="secondary_emergency_contact" placeholder="Enter Name" >
+								<p style="line-height:2em;"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputSecondaryPhoneNumber" class="col-sm-2 col-form-label">Secondary Phone Number</label>
+							<div class="col-sm-10">
+								<input type="text"  class="form-control" name="secondary_phone_number" placeholder="Enter Number" >
+								<p style="line-height:2em;"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputSecondaryRelationship" class="col-sm-2 col-form-label">Secondary Relationship</label>
+							<div class="col-sm-10">
+								<input type="text"  class="form-control" name="secondary_relationship"  placeholder="Enter Relationship" >
+								<p style="line-height:2em;"></p>
+							</div>
+						</div>
+
+						<div>
+							<input type="hidden" name="id" >
+						</div>
+						<br>
+						<div style="display:inline-grid;width:220px"></div>
+						<button type="button" class="btn btn-secondary" data-dismiss="modal" style="width:100px">Cancel</button>
+						<button type="submit" class="btn btn-primary" id="edit-employee"  style="width:100px">Update</button>
+					</div>
+				</form>
+			</div>
+
+
+			<div class="modal-footer">
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Success Toast-->
+
+<div class="toast success " role="alert" id="success-modal" aria-live="assertive" aria-atomic="ture" style="width:400px">
+	<div class="toast-header" style="background-color: #90EE90;" >
+
+		<strong class="mr-auto"  >Success </strong>
+		<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+
+	</div>
+	<div class="toast-body"  >
+	</div>
+</div>
+
+<!-- Error Toast-->
+<div class="toast error" role="alert" id="error-modal" aria-live="assertive" aria-atomic="ture" style="width:400px" >
+	<div class="toast-header"  style="background-color:tomato" >
+
+		<strong class="mr-auto" >Error </strong>
+		<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+
+	</div>
+	<div class="toast-body">
+	</div>
+</div>
+
+
+
+<footer th:replace="snippets.html :: name_footer"></footer>
+
+<script th:src="@{/static/employee.js}"/></script>
+
+</body>	
+
+</html>
