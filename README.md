@@ -1,6 +1,23 @@
-# Infoware-Assignment
-CRUD features in Java spring boot API
 
+<h1 align="center">Infoware-Assignment</h1>
+<p align="center">
+CRUD features in Java spring boot API
+</p>
+
+## Table of Contents:
+1. Employee with multiple contact details (Relationship mapping)
+2. List Employee (with pagination)
+3. Update Employee
+4. Delete Employee
+5.Get Employee
+
+
+## Technology Stack:
+
+1. Spring Boot
+2. MySql
+3. HTML , CSS , JAVASCRIPT.
+4. Java
 
 ![Screenshot from 2023-04-12 20-51-36](https://user-images.githubusercontent.com/91595780/231553029-a12e0012-5727-41d1-923d-98fb0b669f06.png)
 ![Screenshot from 2023-04-12 20-52-10](https://user-images.githubusercontent.com/91595780/231553036-3c214d84-f41e-4294-9f94-8ea7
